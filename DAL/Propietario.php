@@ -22,6 +22,7 @@ class Propietario
     }
     return $seePropietario;
   }
+
   public function Insert(\MODEL\Propietario $propietario)
   {
     $sql = "INSERT INTO propietario (cpf,nome,telefone)
@@ -31,6 +32,37 @@ class Propietario
     $con = Connection::Disconnect();
 
     echo $result->errorCode();
+    return $result;
+  }
+
+  public function SelectByCpf(int $cpf)
+  {
+    $sql = "SELECT * FROM propietario WHERE cpf=?";
+    $con = Connection::Connect();
+    $query = $con->prepare($sql);
+    $query->execute([$cpf]);
+    $data = $query->fetch(\PDO::FETCH_ASSOC);
+    $con = Connection::Disconnect();
+
+    $propietario = new \MODEL\Propietario();
+    $propietario->setCpf($data["cpf"]);
+    $propietario->setNome($data["nome"]);
+    $propietario->setTelefone($data["telefone"]);
+    return $propietario;
+  }
+
+  public function Update(\MODEL\Propietario $propietario)
+  {
+    $sql = "UPDATE propietario SET nome = ?, telefone = ? WHERE cpf = ?; ";
+    $con = Connection::Connect();
+    $query = $con->prepare($sql);
+    $result = $query->execute([
+      $propietario->getNome(),
+      $propietario->getTelefone(),
+      $propietario->getCpf(),
+    ]);
+    $con = Connection::Disconnect();
+
     return $result;
   }
 }

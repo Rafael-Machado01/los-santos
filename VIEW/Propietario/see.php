@@ -21,6 +21,7 @@ $seePropietario = $dalPropietario->Select();
     <?php echo $propietario->getCpf(); ?>
     <?php echo $propietario->getNome(); ?>
     <?php echo $propietario->getTelefone(); ?>
+    <p><a href="./update.php?cpf=<?php echo $propietario->getCpf(); ?>">Editar</a></p>
     <br><br>
     <?php } ?>
 </body>
