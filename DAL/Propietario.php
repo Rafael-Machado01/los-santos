@@ -22,5 +22,16 @@ class Propietario
     }
     return $seePropietario;
   }
+  public function Insert(\MODEL\Propietario $propietario)
+  {
+    $sql = "INSERT INTO propietario (cpf,nome,telefone)
+      VALUES ('{$propietario->getCpf()}', '{$propietario->getNome()}', '{$propietario->getTelefone()}'); ";
+    $con = Connection::Connect();
+    $result = $con->query($sql);
+    $con = Connection::Disconnect();
+
+    echo $result->errorCode();
+    return $result;
+  }
 }
 ?>

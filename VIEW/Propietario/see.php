@@ -14,6 +14,9 @@ $seePropietario = $dalPropietario->Select();
     <title>Propietarios</title>
 </head>
 <body>
+  <h1>Listar Propietarios</h1>
+  <a href="./insert.php"> + Adicionar </a>
+  <br>
 <?php foreach ($seePropietario as $propietario) { ?>
     <?php echo $propietario->getCpf(); ?>
     <?php echo $propietario->getNome(); ?>
