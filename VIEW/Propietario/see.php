@@ -22,7 +22,16 @@ $seePropietario = $dalPropietario->Select();
     <?php echo $propietario->getNome(); ?>
     <?php echo $propietario->getTelefone(); ?>
     <p><a href="./update.php?cpf=<?php echo $propietario->getCpf(); ?>">Editar</a></p>
+    <p <a href="#" onclick="deletePropietario(<?php echo $propietario->getCpf(); ?>)">Remover</a></p>
     <br><br>
     <?php } ?>
+
+<script>
+  function deletePropietario(cpf) {
+    if(confirm('Excluir Propietario' + cpf + '?')) {
+      location.href = './backend/delete.php?cpf=' + cpf;
+    }
+  }
+</script>
 </body>
 </html>

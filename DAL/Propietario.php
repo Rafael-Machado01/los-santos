@@ -65,5 +65,15 @@ class Propietario
 
     return $result;
   }
+  public function Delete(int $cpf)
+  {
+    $sql = "DELETE FROM propietario WHERE cpf = ?;";
+    $con = Connection::Connect();
+    $query = $con->prepare($sql);
+    $result = $query->execute([$cpf]);
+    $con = Connection::Disconnect();
+
+    return $result;
+  }
 }
 ?>

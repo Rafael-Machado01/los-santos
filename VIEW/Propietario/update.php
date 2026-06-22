@@ -16,13 +16,16 @@ $propietario = $dalPropietario->SelectByCpf($cpf);
     <title>Editar Propietario</title>
 </head>
 <body>
-  <form action="./backend/update.php" method="post">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
+  <form action="./backend/update.php" method="post" id="form">
     <p>CPF: <?php echo $propietario->getCpf(); ?> </p>
     <input type="hidden" name="cpf" value=<?php echo $cpf; ?>>
-    <input type="text" name="nome" placeholder="Digite o Nome" value=<?php echo $propietario->getNome(); ?>>
+    <input type="text" name="nome" value="<?php echo $propietario->getNome(); ?>">
     <input type="number" name="telefone" placeholder="Digite o Telefone" value=<?php echo $propietario->getTelefone(); ?>>
     <button type="submit">Enviar</button>
-
+  <script src="./backend/validate.js"></script>
   </form>
 </body>
 </html>
