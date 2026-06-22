@@ -24,7 +24,7 @@ $seeImovel = $dalImovel->Select();
     <?php echo $Imovel->getTipoImovel(); ?>
       <?php echo $Imovel->getPropietario(); ?>
       <?php echo $Imovel->getCorretor(); ?>
-      <?php echo $Imovel->getImagem(); ?>
+      <?php echo $Imovel->getStatus(); ?>
 <img src="../img/imovel/<?php echo $Imovel->getImagem(); ?>" style="width:200px" alt="Casa">
 
   <p><a href="./update.php?id=<?php echo $Imovel->getId(); ?>">Editar</a></p>

@@ -24,6 +24,7 @@ class Imovel
       $imovel->setTipoImovel($line["tipoImovel"]);
       $imovel->setPropietario($line["propietario"]);
       $imovel->setCorretor($line["corretor"]);
+      $imovel->setStatus($line["status"]);
 
       $seeImovel[] = $imovel;
     }
@@ -35,8 +36,8 @@ class Imovel
   public function Insert(\MODEL\Imovel $imovel)
   {
     $sql = "INSERT INTO imovel
-        (endereco, preco, imagem, tipoImovel, propietario, corretor)
-        VALUES (?, ?, ?, ?, ?, ?)";
+        (endereco, preco, imagem, tipoImovel, propietario, corretor,status)
+        VALUES (?, ?, ?, ?, ?, ?,?)";
 
     $con = Connection::Connect();
     $query = $con->prepare($sql);
@@ -48,6 +49,7 @@ class Imovel
       $imovel->getTipoImovel(),
       $imovel->getPropietario(),
       $imovel->getCorretor(),
+      $imovel->getStatus(),
     ]);
 
     Connection::Disconnect();
@@ -75,6 +77,7 @@ class Imovel
       $imovel->setTipoImovel($data["tipoImovel"]);
       $imovel->setPropietario($data["propietario"]);
       $imovel->setCorretor($data["corretor"]);
+      $imovel->setStatus($data["status"]);
     }
 
     return $imovel;
@@ -88,7 +91,8 @@ class Imovel
                     imagem = ?,
                     tipoImovel = ?,
                     propietario = ?,
-                    corretor = ?
+                    corretor = ?,
+                    status = ?
                 WHERE id = ?";
 
     $con = Connection::Connect();
@@ -101,6 +105,7 @@ class Imovel
       $imovel->getTipoImovel(),
       $imovel->getPropietario(),
       $imovel->getCorretor(),
+      $imovel->getStatus(),
       $imovel->getId(),
     ]);
 

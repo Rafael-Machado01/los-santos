@@ -10,6 +10,7 @@ class Imovel
   private ?int $tipoImovel;
   private ?int $propietario;
   private ?int $corretor;
+  private ?int $status;
 
   public function __construct() {}
 
@@ -41,6 +42,10 @@ class Imovel
   {
     return $this->corretor;
   }
+  public function getStatus()
+  {
+    return $this->status;
+  }
   public function setId(int $id)
   {
     $this->id = $id;
@@ -68,6 +73,10 @@ class Imovel
   public function setCorretor(int $corretor)
   {
     $this->corretor = $corretor;
+  }
+  public function setStatus(bool $status)
+  {
+    $this->status = $status;
   }
 }
 ?>

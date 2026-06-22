@@ -4,17 +4,17 @@ include_once __DIR__ . "/../../../MODEL/Imovel.php";
 
 $Imovel = new MODEL\Imovel();
 
+$Imovel->setId($_POST["id"]);
 $Imovel->setEndereco($_POST["endereco"]);
-$Imovel->setPreco((float) $_POST["preco"]);
+$Imovel->setPreco($_POST["preco"]);
 $Imovel->setImagem($_POST["imagem"]);
-$Imovel->setStatus($_POST["status"]);
-$Imovel->setTipoImovel((int) $_POST["tipoImovel"]);
-$Imovel->setPropietario((int) $_POST["propietario"]);
-$Imovel->setCorretor((int) $_POST["corretor"]);
+$Imovel->setCorretor($_POST["corretor"]);
+$Imovel->setPropietario($_POST["propietario"]);
+$Imovel->setTipoImovel($_POST["tipoImovel"]);
+$Imovel->setStatus(isset($_POST["status"]) ? 1 : 0);
 
 $dalImovel = new DAL\Imovel();
-$dalImovel->Insert($Imovel);
+$dalImovel->Update($Imovel);
 
 header("location: ../see.php");
-exit();
 ?>

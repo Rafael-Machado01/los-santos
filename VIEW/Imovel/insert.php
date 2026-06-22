@@ -53,6 +53,8 @@ $tiposImovel = $dalTipoImovel->Select();
       </option>
     <?php } ?>
   </select>
+  <label for="name">Disponivel:</label>
+  <input type="checkbox" name="status">
 
   <button type="submit">Adicionar</button>
 
