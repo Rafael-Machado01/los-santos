@@ -41,6 +41,7 @@ $tiposImovel = $dalTipoImovel->Select();
 
 
     <select name="corretor">
+        <option value="" disabled selected>Selecione um corretor</option>
       <?php foreach ($corretores as $corretor) { ?>
         <option value="<?php echo $corretor->getCpf(); ?>">
           <?php echo $corretor->getNome(); ?>
@@ -49,6 +50,7 @@ $tiposImovel = $dalTipoImovel->Select();
     </select>
 
     <select name="propietario">
+        <option value="" disabled selected>Selecione um Propietario</option>
       <?php foreach ($propietarios as $propietario) { ?>
         <option value="<?php echo $propietario->getCpf(); ?>">
           <?php echo $propietario->getNome(); ?>
@@ -58,6 +60,7 @@ $tiposImovel = $dalTipoImovel->Select();
 
 
     <select name="tipoImovel">
+        <option value="" disabled selected>Selecione um Tipo de Imovel</option>
       <?php foreach ($tiposImovel as $tipoImovel) { ?>
         <option value="<?php echo $tipoImovel->getId(); ?>">
           <?php echo $tipoImovel->getDescricao(); ?>

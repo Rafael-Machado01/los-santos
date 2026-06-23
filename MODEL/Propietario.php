@@ -3,7 +3,7 @@ namespace MODEL;
 
 class Propietario
 {
-  private ?int $cpf;
+  private ?string $cpf;
   private ?string $nome;
   private ?int $telefone;
 
@@ -21,7 +21,7 @@ class Propietario
   {
     return $this->telefone;
   }
-  public function setCpf(int $cpf)
+  public function setCpf(string $cpf)
   {
     $this->cpf = $cpf;
   }

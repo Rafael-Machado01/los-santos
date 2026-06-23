@@ -36,7 +36,7 @@ class Corretor
     return $result;
   }
 
-  public function SelectByCpf(int $cpf)
+  public function SelectByCpf(string $cpf)
   {
     $sql = "SELECT * FROM corretor WHERE cpf=?";
     $con = Connection::Connect();

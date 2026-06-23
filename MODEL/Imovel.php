@@ -8,8 +8,8 @@ class Imovel
   private ?float $preco;
   private ?string $imagem;
   private ?int $tipoImovel;
-  private ?int $propietario;
-  private ?int $corretor;
+  private ?string $propietario;
+  private ?string $corretor;
   private ?int $status;
 
   public function __construct() {}
@@ -66,11 +66,11 @@ class Imovel
   {
     $this->tipoImovel = $tipoImovel;
   }
-  public function setPropietario(int $propietario)
+  public function setPropietario(string $propietario)
   {
     $this->propietario = $propietario;
   }
-  public function setCorretor(int $corretor)
+  public function setCorretor(string $corretor)
   {
     $this->corretor = $corretor;
   }

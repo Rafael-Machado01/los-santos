@@ -7,10 +7,10 @@ $Imovel = new MODEL\Imovel();
 $Imovel->setEndereco($_POST["endereco"]);
 $Imovel->setPreco((float) $_POST["preco"]);
 $Imovel->setImagem($_POST["imagem"]);
-$Imovel->setStatus($_POST["status"]);
+$Imovel->setStatus(isset($_POST["status"]) ? 1 : 0);
 $Imovel->setTipoImovel((int) $_POST["tipoImovel"]);
-$Imovel->setPropietario((int) $_POST["propietario"]);
-$Imovel->setCorretor((int) $_POST["corretor"]);
+$Imovel->setPropietario($_POST["propietario"]);
+$Imovel->setCorretor($_POST["corretor"]);
 
 $dalImovel = new DAL\Imovel();
 $dalImovel->Insert($Imovel);

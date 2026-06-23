@@ -14,7 +14,7 @@ $seeImovel = $dalImovel->Select();
     <title>Imoveis</title>
 </head>
 <body>
-  <h1>Listar Imovels</h1>
+  <h1>Listar Imoveis</h1>
   <a href="./insert.php"> + Adicionar </a>
   <br>
 <?php foreach ($seeImovel as $Imovel) { ?>
@@ -41,4 +41,3 @@ $seeImovel = $dalImovel->Select();
 </script>
 </body>
 </html>
-\
