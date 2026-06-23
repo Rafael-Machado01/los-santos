@@ -14,8 +14,8 @@ $user = $dalUser->SelectByUser($login);
 
 if ($md5 == $user->getPassword()) {
   session_start();
-  $_SESSION["login"] = $login;
-  header("location: ../home.php");
+  $_SESSION["user"] = $login;
+  header("location: ../header.php");
 } else {
   header("location: ../index.php");
 }

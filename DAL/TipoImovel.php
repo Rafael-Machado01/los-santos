@@ -24,5 +24,18 @@ class TipoImovel
 
     return $seeTipoImovel;
   }
+  public function SelectById(int $id)
+  {
+    $sql = "SELECT * FROM tipoImovel WHERE id=?";
+    $con = Connection::Connect();
+    $query = $con->prepare($sql);
+    $query->execute([$id]);
+    $data = $query->fetch(\PDO::FETCH_ASSOC);
+    $con = Connection::Disconnect();
+    $tipoImovel = new \MODEL\TipoImovel();
+    $tipoImovel->setId($data["id"]);
+    $tipoImovel->setDescricao($data["descricao"]);
+    return $tipoImovel;
+  }
 }
 ?>

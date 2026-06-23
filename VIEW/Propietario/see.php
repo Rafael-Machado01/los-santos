@@ -1,38 +1,90 @@
 <?php
 include_once __DIR__ . "/../../DAL/Propietario.php";
 include_once __DIR__ . "/../../MODEL/Propietario.php";
-
 use DAL\Propietario;
-
 $dalPropietario = new DAL\Propietario();
 $seePropietario = $dalPropietario->Select();
 ?>
-
+<?php
+session_start();
+if (!isset($_SESSION["user"])) {
+  header("Location: /login.php");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <title>Propietarios</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Proprietários - Dynasty8</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-  <h1>Listar Propietarios</h1>
-  <a href="./insert.php"> + Adicionar </a>
-  <br>
-<?php foreach ($seePropietario as $propietario) { ?>
-    <?php echo $propietario->getCpf(); ?>
-    <?php echo $propietario->getNome(); ?>
-    <?php echo $propietario->getTelefone(); ?>
-    <p><a href="./update.php?cpf=<?php echo $propietario->getCpf(); ?>">Editar</a></p>
-    <p <a href="#" onclick="deletePropietario(<?php echo $propietario->getCpf(); ?>)">Remover</a></p>
-    <br><br>
-    <?php } ?>
+<body class="bg-gray-900">
+    <header class="bg-[#18713C] p-4 flex items-center justify-between shadow-lg">
+        <div>
+            <h1 class="text-white text-2xl font-bold">Dynasty8 - Gerenciar Proprietários</h1>
+        </div>
+        <div>
+            <a href="./insert.php" class="bg-[#E0CF38] text-[#18713C] px-6 py-2 rounded font-bold hover:bg-[#18713C] hover:text-[#E0CF38] transition-all duration-300">
+                + Adicionar Proprietário
+            </a>
+        </div>
+    </header>
 
-<script>
-  function deletePropietario(cpf) {
-    if(confirm('Excluir Propietario' + cpf + '?')) {
-      location.href = './backend/delete.php?cpf=' + cpf;
-    }
-  }
-</script>
+    <div class="bg-[#116031] text-white text-center p-3">
+        <h2 class="text-lg font-semibold">Proprietários Cadastrados</h2>
+    </div>
+
+    <section class="max-w-7xl mx-auto p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <?php foreach ($seePropietario as $propietario) { ?>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                <div class="bg-gradient-to-r from-[#18713C] to-[#116031] p-6 text-white">
+                    <h3 class="text-2xl font-bold mb-2"><?= $propietario->getNome() ?></h3>
+                    <p class="text-[#E0CF38] font-semibold">CPF: <?= $propietario->getCpf() ?></p>
+                </div>
+
+                <div class="p-5">
+                    <div class="bg-gray-100 p-4 rounded-lg space-y-3 text-sm mb-6">
+                        <div class="flex items-center gap-3">
+
+                            <div>
+                                <p class="text-gray-600 font-semibold">Telefone</p>
+                                <p class="text-gray-900 font-bold"><?= $propietario->getTelefone() ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <a href="./update.php?cpf=<?= $propietario->getCpf() ?>" class="flex-1 bg-blue-500 text-white py-2 rounded font-bold hover:bg-blue-600 transition text-center">
+                            Editar
+                        </a>
+                        <button onclick="deletePropietario('<?= $propietario->getCpf() ?>')" class="flex-1 bg-red-500 text-white py-2 rounded font-bold hover:bg-red-600 transition">
+                            Remover
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+
+        <?php if (empty($seePropietario)): ?>
+        <div class="text-center py-12">
+            <p class="text-white text-lg">Nenhum proprietário cadastrado.</p>
+            <a href="./insert.php" class="mt-4 inline-block bg-[#E0CF38] text-[#18713C] px-6 py-2 rounded font-bold hover:bg-[#18713C] hover:text-[#E0CF38] transition-all duration-300">
+                + Adicionar Proprietário
+            </a>
+        </div>
+        <?php endif; ?>
+    </section>
+
+    <script>
+        function deletePropietario(cpf) {
+            if(confirm('Tem certeza que deseja excluir este proprietário CPF: ' + cpf + '?')) {
+                location.href = './backend/delete.php?cpf=' + cpf;
+            }
+        }
+    </script>
 </body>
 </html>
-\

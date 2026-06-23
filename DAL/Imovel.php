@@ -82,6 +82,15 @@ class Imovel
 
     return $imovel;
   }
+  public function BuyById(int $id)
+  {
+    $sql = "UPDATE imovel SET status = 0 WHERE id = ?";
+    $con = Connection::Connect();
+    $query = $con->prepare($sql);
+    $result = $query->execute([$id]);
+    Connection::Disconnect();
+    return $result;
+  }
 
   public function Update(\MODEL\Imovel $imovel)
   {

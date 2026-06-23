@@ -40,7 +40,7 @@ $tiposImovel = $dalTipoImovel->Select();
     <input type="text" name="imagem" placeholder="Nome da imagem" value="<?php echo $Imovel->getImagem(); ?>" required>
 
 
-    <select name="corretor">
+    <select name="corretor" required>
         <option value="" disabled selected>Selecione um corretor</option>
       <?php foreach ($corretores as $corretor) { ?>
         <option value="<?php echo $corretor->getCpf(); ?>">
@@ -49,7 +49,7 @@ $tiposImovel = $dalTipoImovel->Select();
       <?php } ?>
     </select>
 
-    <select name="propietario">
+    <select name="propietario" required>
         <option value="" disabled selected>Selecione um Propietario</option>
       <?php foreach ($propietarios as $propietario) { ?>
         <option value="<?php echo $propietario->getCpf(); ?>">
@@ -59,7 +59,7 @@ $tiposImovel = $dalTipoImovel->Select();
     </select>
 
 
-    <select name="tipoImovel">
+    <select name="tipoImovel" required>
         <option value="" disabled selected>Selecione um Tipo de Imovel</option>
       <?php foreach ($tiposImovel as $tipoImovel) { ?>
         <option value="<?php echo $tipoImovel->getId(); ?>">

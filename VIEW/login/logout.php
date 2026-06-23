@@ -1,5 +1,5 @@
 <?php
 session_start();
-unset($_SESSION["login"]);
-header("location: ../index.php");
+unset($_SESSION["user"]);
+header("location: ../home.php");
 ?>
