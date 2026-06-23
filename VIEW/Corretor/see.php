@@ -1,12 +1,7 @@
 <?php
-session_start();
-
-if (!isset($_SESSION["user"])) {
-  header("Location: ../index.php");
-  exit();
-}
 include_once __DIR__ . "/../../DAL/Corretor.php";
 include_once __DIR__ . "/../../MODEL/Corretor.php";
+include_once __DIR__ . "/../menu.php";
 use DAL\Corretor;
 $dalCorretor = new DAL\Corretor();
 $seeCorretor = $dalCorretor->Select();
@@ -20,20 +15,11 @@ $seeCorretor = $dalCorretor->Select();
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body class="bg-gray-900">
-    <header class="bg-[#18713C] p-4 flex items-center justify-between shadow-lg">
-        <div>
-            <h1 class="text-white text-2xl font-bold">Dynasty8 - Gerenciar Corretores</h1>
-        </div>
-        <div>
+        <div class="flex justify-center items-center mt-2">
             <a href="./insert.php" class="bg-[#E0CF38] text-[#18713C] px-6 py-2 rounded font-bold hover:bg-[#18713C] hover:text-[#E0CF38] transition-all duration-300">
                 + Adicionar Corretor
             </a>
         </div>
-    </header>
-
-    <div class="bg-[#116031] text-white text-center p-3">
-        <h2 class="text-lg font-semibold">Corretores Cadastrados</h2>
-    </div>
 
     <section class="max-w-7xl mx-auto p-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

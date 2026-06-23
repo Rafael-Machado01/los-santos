@@ -15,7 +15,7 @@ $user = $dalUser->SelectByUser($login);
 if ($md5 == $user->getPassword()) {
   session_start();
   $_SESSION["user"] = $login;
-  header("location: ../header.php");
+  header("location: /VIEW/Imovel/see.php");
 } else {
   header("location: ../index.php");
 }
